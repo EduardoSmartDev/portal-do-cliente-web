@@ -1,0 +1,141 @@
+import { Orcamento } from "./Types";
+
+export default function MockOrcamentoData() {
+  const mockOrcamentosLSF: Orcamento[] = [
+    {
+      id: "1",
+      numero: "LSF-2024-100",
+      titulo: "Residência Steel Frame - Modelo Nordic",
+      descricao:
+        "Execução completa de residência em Light Steel Frame, incluindo radier e cobertura Shingle.",
+      cliente: {
+        nome: "Ana Beatriz Souza",
+        email: "ana.souza@email.com",
+        telefone: "(11) 99888-7777",
+        cpf: "222.333.444-55",
+      },
+      endereco: {
+        logradouro: "Condomínio Green Village",
+        numero: "Lote 45",
+        bairro: "Cotia",
+        cidade: "São Paulo",
+        estado: "SP",
+        cep: "06700-000",
+      },
+      dataEmissao: "2024-02-10T08:00:00Z",
+      dataValidade: "2024-02-25T08:00:00Z",
+      status: "aprovado",
+      areaConstruida: 145.0,
+      tipologia: "Térrea LSF",
+      prazoExecucao: 90, // Obras a seco são rápidas
+      itens: [
+        {
+          id: "lsf-01",
+          descricao: "Aço Galvanizado Z275 - Montantes e Guias 90mm",
+          categoria: "estrutura_aco",
+          unidade: "kg",
+          quantidade: 2500,
+          valorUnitario: 12.5,
+          valorTotal: 31250.0,
+        },
+        {
+          id: "lsf-02",
+          descricao: "Placa Cimentícia 10mm (Fechamento Externo)",
+          categoria: "fechamento_externo",
+          unidade: "m²",
+          quantidade: 180,
+          valorUnitario: 85.0,
+          valorTotal: 15300.0,
+        },
+        {
+          id: "lsf-03",
+          descricao: "Lã de Vidro Wallfelt 4+ (Isolamento Termoacústico)",
+          categoria: "isolamentos",
+          unidade: "rl",
+          quantidade: 15,
+          valorUnitario: 350.0,
+          valorTotal: 5250.0,
+        },
+      ],
+      totalizadores: [
+        {
+          categoria: "estrutura_aco",
+          nomeCategoria: "Estrutura Metálica",
+          quantidade: 1,
+          valorTotal: 31250.0,
+          percentual: 60.3,
+        },
+        {
+          categoria: "fechamento_externo",
+          nomeCategoria: "Placas e Fechamentos",
+          quantidade: 1,
+          valorTotal: 15300.0,
+          percentual: 29.5,
+        },
+      ],
+      subtotal: 51800.0,
+      valorTotal: 51800.0,
+      condicoesPagamento: {
+        numeroParcelas: 4,
+        valorParcela: 12950.0,
+        observacoes:
+          "Pagamento conforme medição de etapas: Radier, Estrutura, Fechamento, Acabamento.",
+      },
+      responsavel: "Eng. Pedro Steel",
+      ultimaAtualizacao: "2024-02-12T10:00:00Z",
+      empresa: { nome: "Espaço Smart Construction" },
+    },
+    {
+      id: "2",
+      numero: "DW-2024-055",
+      titulo: "Retrofit Corporativo - Paredes Drywall",
+      descricao: "Instalação de divisórias acústicas em escritório comercial.",
+      cliente: {
+        nome: "Escritório Advocacia Mendes",
+        email: "financeiro@mendesadv.com",
+        telefone: "(41) 3030-4040",
+        cnpj: "05.555.444/0001-10",
+      },
+      endereco: {
+        logradouro: "Av. Batel",
+        numero: "1000",
+        complemento: "Sala 801",
+        bairro: "Batel",
+        cidade: "Curitiba",
+        estado: "PR",
+        cep: "80000-000",
+      },
+      dataEmissao: "2024-02-18T14:00:00Z",
+      dataValidade: "2024-02-28T14:00:00Z",
+      status: "em_analise",
+      areaConstruida: 250,
+      prazoExecucao: 10,
+      itens: [
+        {
+          id: "dw-01",
+          descricao: "Placa de Gesso Acartonado ST 12.5mm",
+          categoria: "fechamento_interno",
+          unidade: "chapa",
+          quantidade: 120,
+          valorUnitario: 45.9,
+          valorTotal: 5508.0,
+        },
+        {
+          id: "dw-02",
+          descricao: "Montante 70mm",
+          categoria: "estrutura_aco",
+          unidade: "barra",
+          quantidade: 200,
+          valorUnitario: 32.0,
+          valorTotal: 6400.0,
+        },
+      ],
+      totalizadores: [],
+      subtotal: 11908.0,
+      descontoValor: 500.0,
+      valorTotal: 11408.0,
+      ultimaAtualizacao: "2024-02-18T14:00:00Z",
+    },
+  ];
+  return mockOrcamentosLSF;
+}

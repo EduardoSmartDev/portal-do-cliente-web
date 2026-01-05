@@ -15,7 +15,6 @@ import { AdminDashboardProps, AdminView } from "./utils/Types";
 
 
 export default function AdminDashboard(props: AdminDashboardProps) {
-    console.log(props);
   const [active, setActive] = useState<AdminView>(props.initialView ?? "usuarios");
   const [q, setQ] = useState("");
 

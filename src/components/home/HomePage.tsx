@@ -8,7 +8,7 @@ import {
   FileText,
   Wrench,
   DollarSign,
-  FileSpreadsheet,
+  Archive,
   Calendar,
   BookOpen,
   UserPlus,
@@ -90,28 +90,17 @@ export default function HomePageContent({ user }: HomePageContentProps) {
       },
       {
         id: 5,
-        title: "Financeiro",
-        description: "Consulte duplicatas, boletos e extratos",
-        icon: DollarSign,
+        title: "Documentos",
+        description: "Consulte duplicatas, boletos, extratos, contratos, plantas e mais",
+        icon: Archive,
         color: "bg-emerald-500",
         link: "/financeiro",
         tags: ["boletos", "pagamentos", "duplicatas", "pix"],
         admin: false,
-        unlocked: false,
+        unlocked: true,
       },
       {
         id: 6,
-        title: "Documentos",
-        description: "Acesse contratos, plantas, ART e arquivos do projeto",
-        icon: FileSpreadsheet,
-        color: "bg-indigo-500",
-        link: "/documentos",
-        tags: ["contrato", "plantas", "art", "memorial"],
-        admin: false,
-        unlocked: false,
-      },
-      {
-        id: 7,
         title: "Linha do Tempo",
         description: "Histórico completo de todas as interações",
         icon: Clock,
@@ -119,12 +108,12 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         link: "/timeline",
         tags: ["histórico", "feed", "atividades", "interações"],
         admin: false,
-        unlocked: true,
+        unlocked: false,
       },
 
       // 🔒 Em construção (exemplos)
       {
-        id: 8,
+        id: 7,
         title: "Assinaturas Digitais",
         description: "Assine documentos eletronicamente com Clicksign",
         icon: FileText,
@@ -135,7 +124,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         unlocked: false,
       },
       {
-        id: 9,
+        id: 8,
         title: "Agenda de Visitas",
         description: "Solicite e acompanhe visitas técnicas",
         icon: Calendar,
@@ -147,7 +136,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
       },
 
       {
-        id: 10,
+        id: 9,
         title: "Academia Smart",
         description: "Conteúdos educativos sobre construção e steel frame",
         icon: BookOpen,
@@ -158,7 +147,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         unlocked: false,
       },
       {
-        id: 11,
+        id: 10,
         title: "Indicações",
         description: "Indique amigos e ganhe recompensas",
         icon: UserPlus,
@@ -169,7 +158,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         unlocked: false,
       },
       {
-        id: 12,
+        id: 11,
         title: "Minha Casa Digital",
         description: "Visualize detalhes técnicos e materiais da sua obra",
         icon: Home,
@@ -177,10 +166,10 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         link: "/casa-digital",
         tags: ["materiais", "aço", "plantas 3d", "qr code"],
         admin: false,
-        unlocked: true,
+        unlocked: false,
       },
       {
-        id: 13,
+        id: 12,
         title: "Memorial de Materiais",
         description: "Lista completa de materiais utilizados no projeto",
         icon: Package,
@@ -191,7 +180,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         unlocked: false,
       },
       {
-        id: 14,
+        id: 13,
         title: "Sustentabilidade",
         description: "Acompanhe o impacto sustentável do seu projeto",
         icon: Leaf,
@@ -202,7 +191,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
         unlocked: false,
       },
       {
-        id: 15,
+        id: 14,
         title: "Dicas Smart",
         description: "Sugestões personalizadas para complementar seu projeto",
         icon: Lightbulb,
@@ -215,7 +204,7 @@ export default function HomePageContent({ user }: HomePageContentProps) {
 
       // ADMIN
       {
-        id: 16,
+        id: 15,
         title: "Administração",
         description: "Área exclusiva para administradores do sistema",
         icon: Shield,
