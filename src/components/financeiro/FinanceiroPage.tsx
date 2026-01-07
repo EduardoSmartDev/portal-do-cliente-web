@@ -11,6 +11,8 @@ import {
   Bolt
 } from "lucide-react";
 import { Documento } from "./utils/Types";
+import Header from "../header/Header";
+import { UserSession } from "@/lib/Types";
 
 const STYLE_MAP: Record<
   number,
@@ -51,9 +53,10 @@ const projetoData = {
 
 interface DocumentoPageProps {
   documentos: Documento[];
+  user?:UserSession;
 }
 
-export default function PaginaFinanceiro({ documentos }: DocumentoPageProps) {
+export default function PaginaFinanceiro({ documentos, user }: DocumentoPageProps) {
   const [modalOpen, setModalOpen] = useState(false);
   const [selectedDoc, setSelectedDoc] = useState<Documento | null>(null);
 
@@ -92,40 +95,7 @@ export default function PaginaFinanceiro({ documentos }: DocumentoPageProps) {
   return (
     <div className="min-h-screen bg-gray-50 pb-12">
       {/* HEADER */}
-      <header className="bg-linear-to-r from-gray-700 to-gray-600 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="bg-white p-2 rounded-lg shadow-sm">
-                <div className="flex flex-col space-y-1">
-                  <div className="h-2 w-16 bg-gray-500 rounded-full"></div>
-                  <div className="h-2 w-16 bg-orange-500 rounded-full"></div>
-                  <div className="h-2 w-16 bg-gray-600 rounded-full"></div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                  Documentos e Arquivos do Projeto
-                </h1>
-                <p className="mt-1 text-sm text-orange-300 font-medium">
-                  Código: {projetoData.codigo}
-                </p>
-              </div>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-3">
-              <div
-                className={`px-4 py-2 rounded-full font-bold text-sm shadow-sm ${getStatusColor(
-                  projetoData.status
-                )}`}
-              >
-                {getStatusLabel(projetoData.status)}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
-
+     <Header title="Documentos do Projeto" subtitle={`Projeto: ${projetoData.codigo}`} user={user}></Header>
       {/* CONTEÚDO */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <div className="mb-6 flex items-center justify-between">

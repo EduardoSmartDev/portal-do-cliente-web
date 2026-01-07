@@ -21,5 +21,5 @@ export async function proxy(req: NextRequest) {
 
 // Definir quais rotas o middleware protege
 export const config = {
-  matcher: ["/home", "/admin/:path*", "/meus-dados","/sac/:path*"],
+  matcher: ["/home", "/admin/:path*", "/meus-dados","/sac/:path*","/orcamentos/:path*","/projeto/:path*","/financeiro/:path*"],
 };

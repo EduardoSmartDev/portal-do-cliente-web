@@ -14,6 +14,8 @@ import {
   Hash, // Ícone para quantidade
 } from "lucide-react";
 import { Orcamento, StatusOrcamento } from "./utils/Types";
+import Header from "../header/Header";
+import { UserSession } from "@/lib/Types";
 
 // --- Helpers de Formatação e Estilo ---
 
@@ -62,9 +64,10 @@ const getStatusLabel = (status: string) => {
 
 interface OrcamentosListProps {
   orcamentos: Orcamento[];
+  user?:UserSession;
 }
 
-export default function OrcamentosListLSF({ orcamentos }: OrcamentosListProps) {
+export default function OrcamentosListLSF({ orcamentos, user }: OrcamentosListProps) {
   // STATE: Controla qual orçamento está aberto no modal (null = fechado)
   const [selectedOrcamento, setSelectedOrcamento] = useState<Orcamento | null>(null);
 
@@ -105,35 +108,7 @@ export default function OrcamentosListLSF({ orcamentos }: OrcamentosListProps) {
     <div className="min-h-screen bg-gray-50 pb-12">
       
       {/* HEADER */}
-      <header className="bg-linear-to-r from-gray-700 to-gray-600 shadow-lg">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="bg-white p-2 rounded-lg shadow-sm">
-                <div className="flex flex-col space-y-1">
-                  <div className="h-2 w-16 bg-gray-500 rounded-full"></div>
-                  <div className="h-2 w-16 bg-orange-500 rounded-full"></div>
-                  <div className="h-2 w-16 bg-gray-600 rounded-full"></div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                    Gestão de Orçamentos
-                </h1>
-                <p className="mt-1 text-sm text-orange-300 font-medium">
-                  Projeto: {projetoData.codigo}
-                </p>
-              </div>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-3">
-              <div className={`px-4 py-2 rounded-full font-bold text-sm shadow-sm ${getStatusColor(projetoData.status)}`}>
-                {getStatusLabel(projetoData.status)}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header title="Gestão de Orçamentos" subtitle={`Projeto: ${projetoData.codigo}`}></Header>
 
       {/* CONTEÚDO PRINCIPAL */}
       <main className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">

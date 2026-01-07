@@ -13,15 +13,18 @@ import {
 } from "lucide-react"; // ajuste o path
 import { Sac, TipoSac } from "./utils/Types";
 import { createSacSchema, CreateSacValues } from "./utils/CreateFormValidator";
+import Header from "../header/Header";
+import { UserSession } from "@/lib/Types";
 
 interface SacPageProps {
   tipos: TipoSac[];
   meusSacs: Sac[];
+  user: UserSession;
 }
 
 type TabKey = "novo" | "meus";
 
-export default function SacPage({ tipos, meusSacs }: SacPageProps) {
+export default function SacPage({ tipos, meusSacs, user }: SacPageProps) {
   const [tab, setTab] = useState<TabKey>("novo");
   const [msg, setMsg] = useState<{
     type: "success" | "error";
@@ -131,95 +134,38 @@ export default function SacPage({ tipos, meusSacs }: SacPageProps) {
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-orange-50">
       {/* Header */}
-      <header className="bg-linear-to-r from-gray-700 to-gray-600 shadow-lg">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between gap-4">
-            {/* Left: Logo + Title */}
-            <div className="flex items-center space-x-4">
-              <div className="bg-white p-2 rounded-lg">
-                <div className="flex flex-col space-y-1">
-                  <div className="h-2 w-16 bg-gray-500"></div>
-                  <div className="h-2 w-16 bg-orange-500"></div>
-                  <div className="h-2 w-16 bg-gray-600"></div>
-                </div>
-              </div>
+      <Header title="Central de Atendimento (SAC)" user={user} />
+      <div className="bg-white border-b border-gray-200">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex gap-2">
+          <button
+            type="button"
+            onClick={() => setTab("novo")}
+            className={[
+              "px-3 py-2 text-sm font-semibold rounded-md transition flex items-center gap-2",
+              tab === "novo"
+                ? "bg-orange-500 text-white"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+            ].join(" ")}
+          >
+            <MessageSquarePlus className="h-4 w-4" />
+            Abrir SAC
+          </button>
 
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                  SAC - Atendimento
-                </h1>
-                <p className="mt-1 text-sm text-orange-300">
-                  Abra um chamado e acompanhe o andamento.
-                </p>
-              </div>
-            </div>
-
-            {/* Middle/Right: Tabs (fica no topo em telas pequenas) */}
-            <div className="hidden md:flex rounded-lg bg-white/10 p-1">
-              <button
-                type="button"
-                onClick={() => setTab("novo")}
-                className={[
-                  "px-3 py-2 text-sm font-semibold rounded-md transition flex items-center gap-2",
-                  tab === "novo"
-                    ? "bg-white text-gray-900"
-                    : "text-white/80 hover:text-white",
-                ].join(" ")}
-              >
-                <MessageSquarePlus className="h-4 w-4" />
-                Abrir SAC
-              </button>
-              <button
-                type="button"
-                onClick={() => setTab("meus")}
-                className={[
-                  "px-3 py-2 text-sm font-semibold rounded-md transition flex items-center gap-2",
-                  tab === "meus"
-                    ? "bg-white text-gray-900"
-                    : "text-white/80 hover:text-white",
-                ].join(" ")}
-              >
-                <ListChecks className="h-4 w-4" />
-                Meus chamados
-              </button>
-            </div>
-
-
-          </div>
-
-          {/* Tabs para mobile */}
-          <div className="mt-4 md:hidden">
-            <div className="flex rounded-lg bg-white/10 p-1 w-full">
-              <button
-                type="button"
-                onClick={() => setTab("novo")}
-                className={[
-                  "flex-1 px-3 py-2 text-sm font-semibold rounded-md transition flex items-center justify-center gap-2",
-                  tab === "novo"
-                    ? "bg-white text-gray-900"
-                    : "text-white/80 hover:text-white",
-                ].join(" ")}
-              >
-                <MessageSquarePlus className="h-4 w-4" />
-                Abrir SAC
-              </button>
-              <button
-                type="button"
-                onClick={() => setTab("meus")}
-                className={[
-                  "flex-1 px-3 py-2 text-sm font-semibold rounded-md transition flex items-center justify-center gap-2",
-                  tab === "meus"
-                    ? "bg-white text-gray-900"
-                    : "text-white/80 hover:text-white",
-                ].join(" ")}
-              >
-                <ListChecks className="h-4 w-4" />
-                Meus chamados
-              </button>
-            </div>
-          </div>
+          <button
+            type="button"
+            onClick={() => setTab("meus")}
+            className={[
+              "px-3 py-2 text-sm font-semibold rounded-md transition flex items-center gap-2",
+              tab === "meus"
+                ? "bg-orange-500 text-white"
+                : "text-gray-600 hover:text-gray-900 hover:bg-gray-100",
+            ].join(" ")}
+          >
+            <ListChecks className="h-4 w-4" />
+            Meus chamados
+          </button>
         </div>
-      </header>
+      </div>
 
       <main className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {msg && (

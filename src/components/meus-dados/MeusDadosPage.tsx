@@ -8,6 +8,8 @@ import { FormValues, formSchema } from "./utils/EditUserValidator";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
 import { fetchApi } from "@/app/api/apiFetch";
+import Head from "next/head";
+import Header from "../header/Header";
 
 interface MeusDadosPageProps {
   dados: User;
@@ -150,41 +152,7 @@ export default function MeusDadosPage({ dados }: MeusDadosPageProps) {
 
   return (
     <div className="min-h-screen bg-linear-to-br from-gray-50 to-orange-50">
-      <header className="bg-linear-to-r from-gray-700 to-gray-600 shadow-lg">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center space-x-4">
-              <div className="bg-white p-2 rounded-lg">
-                <div className="flex flex-col space-y-1">
-                  <div className="h-2 w-16 bg-gray-500"></div>
-                  <div className="h-2 w-16 bg-orange-500"></div>
-                  <div className="h-2 w-16 bg-gray-600"></div>
-                </div>
-              </div>
-              <div>
-                <h1 className="text-2xl sm:text-3xl font-bold text-white">
-                  Meus Dados
-                </h1>
-                <p className="mt-1 text-sm text-orange-300">
-                  Atualize suas informações pessoais e de contato
-                </p>
-              </div>
-            </div>
-
-            <div className="hidden sm:flex items-center gap-3">
-              <div className="text-right">
-                <p className="text-sm font-medium text-white">
-                  {dados?.nome ?? ""}
-                </p>
-                <p className="text-xs text-gray-200">{dados?.email ?? ""}</p>
-              </div>
-              <div className="h-12 w-12 rounded-full bg-orange-500 flex items-center justify-center text-white font-semibold shadow-lg">
-                {(dados?.nome?.charAt(0) ?? "?").toUpperCase()}
-              </div>
-            </div>
-          </div>
-        </div>
-      </header>
+      <Header title="Meus Dados" subtitle="Atualize suas informações pessoais e de contato" />
 
       <main className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         {msg && (
@@ -295,7 +263,7 @@ export default function MeusDadosPage({ dados }: MeusDadosPageProps) {
                       />
                     ) : dados?.foto ? (
                       <img
-                        src={dados.foto}
+                        src={`${process.env.NEXT_PUBLIC_CLOUDFRONT_URL}/clientes/${dados.foto}`}
                         alt="Foto atual"
                         className="h-12 w-12 rounded-full object-cover ring-1 ring-gray-200"
                         onError={(e) => {

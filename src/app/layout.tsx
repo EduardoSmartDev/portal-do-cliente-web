@@ -4,11 +4,6 @@ import { Inter, Montserrat, Poppins, Roboto } from "next/font/google";
 import { Toaster } from "react-hot-toast";
 import "./globals.css";
 
-const inter = Inter({
-  subsets: ["latin"],
-  variable: "--font-sans",
-  display: "swap",
-});
 
 const font = Montserrat({
   subsets: ["latin"],
